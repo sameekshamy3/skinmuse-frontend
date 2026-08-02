@@ -1,0 +1,114 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* SkinMuse brand tokens */
+  --color-ivory: var(--ivory);
+  --color-beige: var(--beige);
+  --color-blush: var(--blush);
+  --color-rosegold: var(--rosegold);
+  --color-charcoal: var(--charcoal);
+
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-luxe: 0 30px 60px -20px color-mix(in oklab, var(--rosegold) 25%, transparent);
+  --shadow-soft: 0 10px 40px -12px oklch(0 0 0 / 0.08);
+}
+
+:root {
+  --radius: 1rem;
+
+  --ivory: oklch(0.985 0.008 80);
+  --beige: oklch(0.94 0.018 70);
+  --blush: oklch(0.9 0.028 30);
+  --rosegold: oklch(0.66 0.075 40);
+  --charcoal: oklch(0.28 0.005 60);
+
+  --background: var(--ivory);
+  --foreground: var(--charcoal);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--charcoal);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--charcoal);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--beige);
+  --secondary-foreground: var(--charcoal);
+  --muted: var(--beige);
+  --muted-foreground: oklch(0.5 0.01 60);
+  --accent: var(--rosegold);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.28 0.005 60 / 0.08);
+  --input: oklch(0.28 0.005 60 / 0.1);
+  --ring: var(--rosegold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--ivory) 10%, transparent), color-mix(in oklab, var(--ivory) 10%, transparent)),
+      url("/__l5e/assets-v1/7c05a416-ae65-4454-8218-ef728eb57f3f/skinmuse-bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--rosegold) 25%, transparent);
+    color: var(--charcoal);
+  }
+}
+
+@utility font-serif {
+  font-family: var(--font-serif);
+}
