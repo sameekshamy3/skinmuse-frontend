@@ -45,6 +45,22 @@ function LoginPage() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const { signInWithPopup } = await import("firebase/auth");
+      const { auth, googleProvider } = await import("@/lib/firebase");
+      await signInWithPopup(auth, googleProvider);
+      navigate({ to: "/dashboard" });
+    } catch (err: any) {
+      setError(err.message || "Failed to sign in with Google");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   return (
     <AuthLayout
       eyebrow="Welcome back"
@@ -52,7 +68,7 @@ function LoginPage() {
       subtitle="Sign in to revisit your palette and see this month's edit."
     >
       <div className="space-y-3">
-        <GoogleButton />
+        <GoogleButton onClick={handleGoogleSignIn} disabled={loading} />
         <Link
           to="/"
           className="flex w-full items-center justify-center rounded-2xl border border-charcoal/10 bg-white/40 py-3.5 text-sm font-medium text-charcoal/70 hover:bg-beige/50 transition-colors"

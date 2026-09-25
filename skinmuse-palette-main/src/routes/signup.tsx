@@ -50,6 +50,27 @@ function SignupPage() {
     }
   };
 
+  const handleGoogleSignUp = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const { signInWithPopup } = await import("firebase/auth");
+      const { auth, googleProvider } = await import("@/lib/firebase");
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      await api.post("/auth/sync", {
+        name: user.displayName || "New Muse",
+        email: user.email,
+      });
+      navigate({ to: "/dashboard" });
+    } catch (err: any) {
+      setError(err.message || "Failed to sign up with Google");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   return (
     <AuthLayout
       eyebrow="Begin the ritual"
@@ -57,7 +78,7 @@ function SignupPage() {
       subtitle="Create your profile to save your diagnostic shade and receive curated edits."
     >
       <div className="space-y-3">
-        <GoogleButton label="Sign up with Google" />
+        <GoogleButton label="Sign up with Google" onClick={handleGoogleSignUp} disabled={loading} />
       </div>
 
       <Divider label="or with email" />

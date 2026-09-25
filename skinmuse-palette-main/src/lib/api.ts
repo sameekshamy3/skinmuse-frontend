@@ -1,6 +1,6 @@
 import { auth } from "./firebase";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://skin-muse-backend-1.vercel.app/api";
 
 interface FetchOptions extends RequestInit {
   data?: any;
@@ -30,7 +30,12 @@ export const api = {
       headers,
     });
     if (!res.ok) {
-      throw new Error(`API Error: ${res.statusText}`);
+      let errorMessage = `API Error: ${res.statusText}`;
+      try {
+        const errorData = await res.clone().json();
+        if (errorData.message) errorMessage = errorData.message;
+      } catch (e) {}
+      throw new Error(errorMessage);
     }
     return res.json();
   },
@@ -44,7 +49,12 @@ export const api = {
       body: isFormData ? data : JSON.stringify(data),
     });
     if (!res.ok) {
-      throw new Error(`API Error: ${res.statusText}`);
+      let errorMessage = `API Error: ${res.statusText}`;
+      try {
+        const errorData = await res.clone().json();
+        if (errorData.message) errorMessage = errorData.message;
+      } catch (e) {}
+      throw new Error(errorMessage);
     }
     return res.json();
   },

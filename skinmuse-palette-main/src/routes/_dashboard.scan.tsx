@@ -604,8 +604,7 @@ function UploadingStep({ image }: { image: string }) {
         if (!active) return;
         setStepIdx(3);
         setProgress(100);
-        
-        setTimeout(() => navigate({ to: "/dashboard" }), 1000); // Or to results
+        setTimeout(() => { window.location.href = "/scan/results"; }, 1000);
       } catch (err: any) {
         if (!active) return;
         setError(err.message || "Failed to process scan");

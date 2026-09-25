@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 import {
   Sparkles,
   Droplet,
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/_dashboard/scan/results")({
   component: ResultsPage,
 });
 
-// TODO: replace mock data with real analysis payload from AI backend.
+// Fallback mock data in case real scan doesn't have fields
 const MOCK = {
   skinTone: { label: "Warm Ivory", value: "W3.5", swatch: "#E8C6A8" },
   undertone: { label: "Peach", value: "Warm", swatch: "#F1B99B" },
@@ -60,6 +62,17 @@ const RECS = [
 ];
 
 function ResultsPage() {
+  const { data: dashboardData, isLoading } = useQuery({
+    queryKey: ["dashboard-summary"],
+    queryFn: () => api.get("/dashboard"),
+  });
+  const latestScan = dashboardData?.latestScan;
+  const analysis = latestScan?.colorAnalysis;
+  const features = latestScan?.featureAnalysis;
+
+  if (isLoading) {
+    return <div className="p-8 text-center text-charcoal/50 font-medium">Loading your scan results...</div>;
+  }
   return (
     <div className="mx-auto max-w-6xl">
       <div className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/60 p-6 sm:p-10 shadow-luxe backdrop-blur-2xl">
@@ -93,39 +106,39 @@ function ResultsPage() {
           <MetricCard
             icon={<Palette size={18} />}
             label="Skin Tone"
-            value={MOCK.skinTone.label}
+            value={analysis?.skinTone || MOCK.skinTone.label}
             hint={MOCK.skinTone.value}
             swatch={MOCK.skinTone.swatch}
           />
           <MetricCard
             icon={<Sun size={18} />}
             label="Undertone"
-            value={MOCK.undertone.label}
+            value={analysis?.undertone || MOCK.undertone.label}
             hint={MOCK.undertone.value}
             swatch={MOCK.undertone.swatch}
           />
           <MetricCard
             icon={<Droplet size={18} />}
             label="Skin Type"
-            value={MOCK.skinType.label}
+            value={features?.skinType || MOCK.skinType.label}
             hint={MOCK.skinType.value}
           />
           <MetricCard
             icon={<Circle size={18} />}
             label="Dark Circles"
-            value={MOCK.darkCircles.label}
+            value={features?.darkCircles || MOCK.darkCircles.label}
             hint={MOCK.darkCircles.value}
           />
           <MetricCard
-            icon={<Waves size={18} />}
+            icon={<Sparkles size={18} />}
             label="Pigmentation"
-            value={MOCK.pigmentation.label}
+            value={features?.pigmentation || MOCK.pigmentation.label}
             hint={MOCK.pigmentation.value}
           />
           <MetricCard
-            icon={<Zap size={18} />}
-            label="Acne"
-            value={MOCK.acne.label}
+            icon={<Waves size={18} />}
+            label="Acne & Blemishes"
+            value={features?.acne || MOCK.acne.label}
             hint={MOCK.acne.value}
           />
         </div>

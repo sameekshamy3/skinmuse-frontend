@@ -67,11 +67,13 @@ export function AuthLayout({
   );
 }
 
-export function GoogleButton({ label = "Continue with Google" }: { label?: string }) {
+export function GoogleButton({ label = "Continue with Google", onClick, disabled }: { label?: string; onClick?: () => void; disabled?: boolean }) {
   return (
     <button
       type="button"
-      className="flex w-full items-center justify-center gap-3 rounded-2xl border border-charcoal/10 bg-white py-3.5 text-sm font-medium text-charcoal shadow-sm hover:bg-beige/50 transition-colors"
+      onClick={onClick}
+      disabled={disabled}
+      className="flex w-full items-center justify-center gap-3 rounded-2xl border border-charcoal/10 bg-white py-3.5 text-sm font-medium text-charcoal shadow-sm hover:bg-beige/50 transition-colors disabled:opacity-50"
     >
       <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
         <path
@@ -99,37 +101,34 @@ export function Divider({ label }: { label: string }) {
   );
 }
 
+import { InputHTMLAttributes } from "react";
+
 export function Field({
   label,
-  type = "text",
-  placeholder,
-  autoComplete,
+  ...props
 }: {
   label: string;
-  type?: string;
-  placeholder?: string;
-  autoComplete?: string;
-}) {
+} & InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="block">
       <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-charcoal/60">
         {label}
       </span>
       <input
-        type={type}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        className="w-full rounded-2xl border border-charcoal/10 bg-white/60 px-4 py-3.5 text-sm text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-rosegold/40 focus:border-rosegold/40 transition"
+        {...props}
+        className="w-full rounded-2xl border border-charcoal/10 bg-white/60 px-4 py-3.5 text-sm text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-rosegold/40 focus:border-rosegold/40 transition disabled:opacity-50"
       />
     </label>
   );
 }
 
-export function PrimaryButton({ children }: { children: ReactNode }) {
+import { ButtonHTMLAttributes } from "react";
+
+export function PrimaryButton({ children, ...props }: { children: ReactNode } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
-      type="submit"
-      className="w-full rounded-2xl bg-charcoal py-3.5 text-sm font-medium text-ivory shadow-sm hover:bg-rosegold hover:shadow-luxe transition-all"
+      {...props}
+      className={`w-full rounded-2xl bg-charcoal py-3.5 text-sm font-medium text-ivory shadow-sm hover:bg-rosegold hover:shadow-luxe transition-all disabled:opacity-50 disabled:cursor-not-allowed ${props.className || ''}`}
     >
       {children}
     </button>

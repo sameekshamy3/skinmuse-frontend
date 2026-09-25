@@ -9,40 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
-import { Route as DashboardRouteImport } from './routes/_dashboard'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DashboardWishlistRouteImport } from './routes/_dashboard.wishlist'
-import { Route as DashboardTutorialsRouteImport } from './routes/_dashboard.tutorials'
-import { Route as DashboardTryOnRouteImport } from './routes/_dashboard.try-on'
-import { Route as DashboardSubscriptionRouteImport } from './routes/_dashboard.subscription'
-import { Route as DashboardSettingsRouteImport } from './routes/_dashboard.settings'
-import { Route as DashboardSearchRouteImport } from './routes/_dashboard.search'
-import { Route as DashboardScanRouteImport } from './routes/_dashboard.scan'
-import { Route as DashboardSavedRouteImport } from './routes/_dashboard.saved'
-import { Route as DashboardRecommendationsRouteImport } from './routes/_dashboard.recommendations'
-import { Route as DashboardNotificationsRouteImport } from './routes/_dashboard.notifications'
-import { Route as DashboardLooksRouteImport } from './routes/_dashboard.looks'
-import { Route as DashboardHistoryRouteImport } from './routes/_dashboard.history'
-import { Route as DashboardHelpRouteImport } from './routes/_dashboard.help'
-import { Route as DashboardFavoritesRouteImport } from './routes/_dashboard.favorites'
-import { Route as DashboardDashboardRouteImport } from './routes/_dashboard.dashboard'
-import { Route as DashboardBeautyProfileRouteImport } from './routes/_dashboard.beauty-profile'
-import { Route as DashboardAchievementsRouteImport } from './routes/_dashboard.achievements'
+import { Route as DashboardRouteImport } from './routes/_dashboard'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as DashboardAccountRouteImport } from './routes/_dashboard.account'
-import { Route as DashboardScanResultsRouteImport } from './routes/_dashboard.scan.results'
+import { Route as DashboardAchievementsRouteImport } from './routes/_dashboard.achievements'
+import { Route as DashboardBeautyProfileRouteImport } from './routes/_dashboard.beauty-profile'
+import { Route as DashboardDashboardRouteImport } from './routes/_dashboard.dashboard'
+import { Route as DashboardFavoritesRouteImport } from './routes/_dashboard.favorites'
+import { Route as DashboardHelpRouteImport } from './routes/_dashboard.help'
+import { Route as DashboardHistoryRouteImport } from './routes/_dashboard.history'
+import { Route as DashboardLooksRouteImport } from './routes/_dashboard.looks'
+import { Route as DashboardNotificationsRouteImport } from './routes/_dashboard.notifications'
+import { Route as DashboardRecommendationsRouteImport } from './routes/_dashboard.recommendations'
+import { Route as DashboardSavedRouteImport } from './routes/_dashboard.saved'
+import { Route as DashboardScanRouteImport } from './routes/_dashboard.scan'
+import { Route as DashboardSearchRouteImport } from './routes/_dashboard.search'
+import { Route as DashboardSettingsRouteImport } from './routes/_dashboard.settings'
+import { Route as DashboardSubscriptionRouteImport } from './routes/_dashboard.subscription'
+import { Route as DashboardTryOnRouteImport } from './routes/_dashboard.try-on'
+import { Route as DashboardTutorialsRouteImport } from './routes/_dashboard.tutorials'
+import { Route as DashboardWishlistRouteImport } from './routes/_dashboard.wishlist'
 import { Route as DashboardProductIdRouteImport } from './routes/_dashboard.product.$id'
+import { Route as DashboardScanResultsRouteImport } from './routes/_dashboard.scan.results'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/_dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -50,53 +49,59 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/_dashboard',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardWishlistRoute = DashboardWishlistRouteImport.update({
-  id: '/wishlist',
-  path: '/wishlist',
+const DashboardAccountRoute = DashboardAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardTutorialsRoute = DashboardTutorialsRouteImport.update({
-  id: '/tutorials',
-  path: '/tutorials',
+const DashboardAchievementsRoute = DashboardAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardTryOnRoute = DashboardTryOnRouteImport.update({
-  id: '/try-on',
-  path: '/try-on',
+const DashboardBeautyProfileRoute = DashboardBeautyProfileRouteImport.update({
+  id: '/beauty-profile',
+  path: '/beauty-profile',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardSubscriptionRoute = DashboardSubscriptionRouteImport.update({
-  id: '/subscription',
-  path: '/subscription',
+const DashboardDashboardRoute = DashboardDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
+const DashboardFavoritesRoute = DashboardFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardSearchRoute = DashboardSearchRouteImport.update({
-  id: '/search',
-  path: '/search',
+const DashboardHelpRoute = DashboardHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardScanRoute = DashboardScanRouteImport.update({
-  id: '/scan',
-  path: '/scan',
+const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardSavedRoute = DashboardSavedRouteImport.update({
-  id: '/saved',
-  path: '/saved',
+const DashboardLooksRoute = DashboardLooksRouteImport.update({
+  id: '/looks',
+  path: '/looks',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardRecommendationsRoute =
@@ -105,60 +110,55 @@ const DashboardRecommendationsRoute =
     path: '/recommendations',
     getParentRoute: () => DashboardRoute,
   } as any)
-const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
+const DashboardSavedRoute = DashboardSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardLooksRoute = DashboardLooksRouteImport.update({
-  id: '/looks',
-  path: '/looks',
+const DashboardScanRoute = DashboardScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
+const DashboardSearchRoute = DashboardSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardHelpRoute = DashboardHelpRouteImport.update({
-  id: '/help',
-  path: '/help',
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardFavoritesRoute = DashboardFavoritesRouteImport.update({
-  id: '/favorites',
-  path: '/favorites',
+const DashboardSubscriptionRoute = DashboardSubscriptionRouteImport.update({
+  id: '/subscription',
+  path: '/subscription',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardDashboardRoute = DashboardDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const DashboardTryOnRoute = DashboardTryOnRouteImport.update({
+  id: '/try-on',
+  path: '/try-on',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardBeautyProfileRoute = DashboardBeautyProfileRouteImport.update({
-  id: '/beauty-profile',
-  path: '/beauty-profile',
+const DashboardTutorialsRoute = DashboardTutorialsRouteImport.update({
+  id: '/tutorials',
+  path: '/tutorials',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardAchievementsRoute = DashboardAchievementsRouteImport.update({
-  id: '/achievements',
-  path: '/achievements',
+const DashboardWishlistRoute = DashboardWishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardAccountRoute = DashboardAccountRouteImport.update({
-  id: '/account',
-  path: '/account',
+const DashboardProductIdRoute = DashboardProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardScanResultsRoute = DashboardScanResultsRouteImport.update({
   id: '/results',
   path: '/results',
   getParentRoute: () => DashboardScanRoute,
-} as any)
-const DashboardProductIdRoute = DashboardProductIdRouteImport.update({
-  id: '/product/$id',
-  path: '/product/$id',
-  getParentRoute: () => DashboardRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -333,25 +333,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_dashboard': {
@@ -361,123 +347,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/wishlist': {
-      id: '/_dashboard/wishlist'
-      path: '/wishlist'
-      fullPath: '/wishlist'
-      preLoaderRoute: typeof DashboardWishlistRouteImport
-      parentRoute: typeof DashboardRoute
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/tutorials': {
-      id: '/_dashboard/tutorials'
-      path: '/tutorials'
-      fullPath: '/tutorials'
-      preLoaderRoute: typeof DashboardTutorialsRouteImport
-      parentRoute: typeof DashboardRoute
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/try-on': {
-      id: '/_dashboard/try-on'
-      path: '/try-on'
-      fullPath: '/try-on'
-      preLoaderRoute: typeof DashboardTryOnRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/subscription': {
-      id: '/_dashboard/subscription'
-      path: '/subscription'
-      fullPath: '/subscription'
-      preLoaderRoute: typeof DashboardSubscriptionRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/settings': {
-      id: '/_dashboard/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof DashboardSettingsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/search': {
-      id: '/_dashboard/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof DashboardSearchRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/scan': {
-      id: '/_dashboard/scan'
-      path: '/scan'
-      fullPath: '/scan'
-      preLoaderRoute: typeof DashboardScanRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/saved': {
-      id: '/_dashboard/saved'
-      path: '/saved'
-      fullPath: '/saved'
-      preLoaderRoute: typeof DashboardSavedRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/recommendations': {
-      id: '/_dashboard/recommendations'
-      path: '/recommendations'
-      fullPath: '/recommendations'
-      preLoaderRoute: typeof DashboardRecommendationsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/notifications': {
-      id: '/_dashboard/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof DashboardNotificationsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/looks': {
-      id: '/_dashboard/looks'
-      path: '/looks'
-      fullPath: '/looks'
-      preLoaderRoute: typeof DashboardLooksRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/history': {
-      id: '/_dashboard/history'
-      path: '/history'
-      fullPath: '/history'
-      preLoaderRoute: typeof DashboardHistoryRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/help': {
-      id: '/_dashboard/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof DashboardHelpRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/favorites': {
-      id: '/_dashboard/favorites'
-      path: '/favorites'
-      fullPath: '/favorites'
-      preLoaderRoute: typeof DashboardFavoritesRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/dashboard': {
-      id: '/_dashboard/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardDashboardRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/beauty-profile': {
-      id: '/_dashboard/beauty-profile'
-      path: '/beauty-profile'
-      fullPath: '/beauty-profile'
-      preLoaderRoute: typeof DashboardBeautyProfileRouteImport
+    '/_dashboard/account': {
+      id: '/_dashboard/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof DashboardAccountRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/_dashboard/achievements': {
@@ -487,11 +382,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardAchievementsRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/account': {
-      id: '/_dashboard/account'
-      path: '/account'
-      fullPath: '/account'
-      preLoaderRoute: typeof DashboardAccountRouteImport
+    '/_dashboard/beauty-profile': {
+      id: '/_dashboard/beauty-profile'
+      path: '/beauty-profile'
+      fullPath: '/beauty-profile'
+      preLoaderRoute: typeof DashboardBeautyProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/dashboard': {
+      id: '/_dashboard/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardDashboardRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/favorites': {
+      id: '/_dashboard/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof DashboardFavoritesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/help': {
+      id: '/_dashboard/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof DashboardHelpRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/history': {
+      id: '/_dashboard/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof DashboardHistoryRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/looks': {
+      id: '/_dashboard/looks'
+      path: '/looks'
+      fullPath: '/looks'
+      preLoaderRoute: typeof DashboardLooksRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/notifications': {
+      id: '/_dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/recommendations': {
+      id: '/_dashboard/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof DashboardRecommendationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/saved': {
+      id: '/_dashboard/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof DashboardSavedRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/scan': {
+      id: '/_dashboard/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof DashboardScanRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/search': {
+      id: '/_dashboard/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof DashboardSearchRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/settings': {
+      id: '/_dashboard/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/subscription': {
+      id: '/_dashboard/subscription'
+      path: '/subscription'
+      fullPath: '/subscription'
+      preLoaderRoute: typeof DashboardSubscriptionRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/try-on': {
+      id: '/_dashboard/try-on'
+      path: '/try-on'
+      fullPath: '/try-on'
+      preLoaderRoute: typeof DashboardTryOnRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/tutorials': {
+      id: '/_dashboard/tutorials'
+      path: '/tutorials'
+      fullPath: '/tutorials'
+      preLoaderRoute: typeof DashboardTutorialsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/wishlist': {
+      id: '/_dashboard/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof DashboardWishlistRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/product/$id': {
+      id: '/_dashboard/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof DashboardProductIdRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/_dashboard/scan/results': {
@@ -500,13 +507,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/scan/results'
       preLoaderRoute: typeof DashboardScanResultsRouteImport
       parentRoute: typeof DashboardScanRoute
-    }
-    '/_dashboard/product/$id': {
-      id: '/_dashboard/product/$id'
-      path: '/product/$id'
-      fullPath: '/product/$id'
-      preLoaderRoute: typeof DashboardProductIdRouteImport
-      parentRoute: typeof DashboardRoute
     }
   }
 }

@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 import {
   Camera,
   Upload,
@@ -86,6 +88,19 @@ function TryOn() {
   const [split, setSplit] = useState(50);
   const [applied, setApplied] = useState<Record<ToolKey, string>>({} as Record<ToolKey, string>);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { data: dashboardData } = useQuery({
+    queryKey: ["dashboard-summary"],
+    queryFn: () => api.get("/dashboard"),
+  });
+
+  const latestScan = dashboardData?.latestScan;
+
+  useEffect(() => {
+    if (source === "scan" && latestScan?.originalImageUrl) {
+      setImageUrl(latestScan.originalImageUrl);
+    }
+  }, [source, latestScan]);
 
   const currentShade = SHADES[tool][shadeIdx];
 
